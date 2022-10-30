@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeData() {
         viewModel.fst.observe(this, Observer {
-            mainRecycler.adapter = NoteRecyclerAdapter(viewModel, it, this)
+            mainRecycler.adapter = NoteRecyclerAdapter(viewModel, it)
         })
     }
 
