@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addData() {
         val title = edtTitle.text.toString()
-        if (title.isNullOrEmpty()) {
+        if (title.isEmpty()) {
             Toast.makeText(this, "Please enter title!", Toast.LENGTH_LONG).show()
         } else {
             val blog = Blog(title)
