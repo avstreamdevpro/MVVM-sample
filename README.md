@@ -4,3 +4,6 @@
 - implemented one-way, two-way data binding with MVVM architecture.
 
 
+<div>
+  <img src="https://github.com/avstreamdevpro/MVVM-sample/blob/master/Screenshot_mvvm.png">
+</div>
