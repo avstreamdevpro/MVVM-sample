@@ -4,7 +4,3 @@
 - implemented one-way, two-way data binding with MVVM architecture.
 
 
-<div width="30%" height="60%">
-  <img src="https://user-images.githubusercontent.com/59848416/198891543-2ce85fea-5770-4700-8e44-2266375d2f0e.png">
-</div>
-
