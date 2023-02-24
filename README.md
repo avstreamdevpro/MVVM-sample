@@ -5,5 +5,5 @@
 
 
 <div>
-  <img src="https://github.com/avstreamdevpro/MVVM-sample/blob/master/Screenshot_mvvm.png">
+  <img src="https://github.com/avstreamdevpro/MVVM-sample/blob/master/Screenshot_mvvm.png" width="350">
 </div>
