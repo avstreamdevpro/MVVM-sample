@@ -1,14 +1,8 @@
 package com.avstream.mvvmsample
 
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.Bindable
-import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import java.util.*
-import kotlin.collections.ArrayList
 
 class MainViewModel: ObservableViewModel(){
     var fst = MutableLiveData<ArrayList<Blog>>()
@@ -24,7 +18,6 @@ class MainViewModel: ObservableViewModel(){
             if (field != value) {
                 field = value
                 notifyPropertyChanged(BR.editedTitle)
-                Log.e("setting title--->", field)
             }
         }
 
