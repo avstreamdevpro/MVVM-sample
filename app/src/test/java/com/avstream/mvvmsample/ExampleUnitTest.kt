@@ -1,4 +1,4 @@
-package com.huntcontrol.mvvmsample
+package com.avstream.mvvmsample
 
 import org.junit.Test
 

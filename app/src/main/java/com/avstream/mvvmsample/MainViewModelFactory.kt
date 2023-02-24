@@ -1,4 +1,4 @@
-package com.huntcontrol.mvvmsample
+package com.avstream.mvvmsample
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

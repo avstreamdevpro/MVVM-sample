@@ -1,48 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/edtTitle"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Title"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.avstream.mvvmsample.MainViewModel" />
+    </data>
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="200dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="24dp"
-        android:text="Submit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtTitle"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mainRecycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        tools:listitem="@layout/item"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSubmit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <EditText
+            android:id="@+id/edt_title"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:autofillHints="@string/title"
+            android:inputType="text"
+            android:hint="@string/title"
+            android:text="@={viewModel.editedTitle}"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txt_title_edit"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:text="@{edtTitle.text}"
+            app:layout_constraintEnd_toEndOf="@+id/edt_title"
+            app:layout_constraintStart_toStartOf="@+id/edt_title"
+            app:layout_constraintTop_toBottomOf="@+id/edt_title" />
+
+        <TextView
+            android:id="@+id/txt_title_duplicated"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:text="@{viewModel.editedTitle}"
+            app:layout_constraintEnd_toEndOf="@+id/edt_title"
+            app:layout_constraintStart_toStartOf="@+id/edt_title"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title_edit" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="300dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/submit"
+            android:onClick="@{() -> viewModel.onSubmit()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title_duplicated" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_recycler"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_submit"
+            tools:listitem="@layout/item" />
+
+        <TextView
+            android:id="@+id/txt_title_content"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:text="@{viewModel.currentTitle}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_recycler" />
+
+        <Button
+            android:id="@+id/btn_change_title"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/change_title"
+            android:onClick="@{() -> viewModel.onChangeTitle()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title_content" />
+
+        <TextView
+            android:id="@+id/txt_random_title"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:text="@{viewModel.currentRandomTitle}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_change_title" />
+
+        <Button
+            android:id="@+id/btn_select_random_title"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/select_random_title"
+            android:onClick="@{() -> viewModel.onSelectRandomTitle()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_random_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

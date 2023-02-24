@@ -1,4 +1,4 @@
-package com.huntcontrol.mvvmsample
+package com.avstream.mvvmsample
 
 import android.view.LayoutInflater
 import android.view.View
@@ -25,13 +25,13 @@ class NoteRecyclerAdapter(val viewModel: MainViewModel, private val arrayList: A
 
     inner class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        private val txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
-        private val imgDelete: ImageView = itemView.findViewById(R.id.imgDelete)
+        private val txtTitle: TextView = itemView.findViewById(R.id.txt_title)
+        private val imgDelete: ImageView = itemView.findViewById(R.id.img_delete)
 
         fun bindView(blog: Blog) {
             txtTitle.text = blog.title
             imgDelete.setOnClickListener {
-                viewModel.remove(blog)
+                viewModel.removeBlog(blog)
                 notifyItemRemoved(arrayList.indexOf(blog))
             }
         }
